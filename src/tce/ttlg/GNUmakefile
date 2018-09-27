@@ -7,7 +7,15 @@ MAKEFLAGS +=" -j1 -l0.001"
 
  #LIB_DEFINES = -I./includes $(CUDA_INCLUDE)
 
- LIB_INCLUDES = -I./includes $(CUDA_INCLUDE)
+LIB_INCLUDES = -I./includes
+
+ifdef TCE_CUDA
+LIB_INCLUDES += $(CUDA_INCLUDE)
+endif
+
+ifdef TCE_HIP
+LIB_INCLUDES += $(HIP_INCLUDE)
+endif
 
  #CUDA_FLAGS = -I./includes $(CUDA_INCLUDE)
 

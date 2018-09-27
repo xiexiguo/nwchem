@@ -35,7 +35,11 @@ all $(BINDIR)/$(NWBINNAME) $(NWBINNAME):	directories libraries
 ifeq ($(TARGET),SOLARIS)
 	/bin/rm -f $(BINDIR)/$(NWBINNAME)
 endif
+ifdef HIP
+	$(HIP) $(LDFLAGS) -o $(BINDIR)/$(NWBINNAME) nwchem.o stubs.o -lnwctask $(LIBS) -lgfortran
+else
 	$(LINK.f) -o $(BINDIR)/$(NWBINNAME) nwchem.o stubs.o -lnwctask $(LIBS)
+endif
 ifdef SUMO
 	$(AR) rcv $(LIBDIR)/libnwchem-sumo.a $(LIBDIR)/objs/*.o
 	$(RANLIB) $(LIBDIR)/libnwchem-sumo.a

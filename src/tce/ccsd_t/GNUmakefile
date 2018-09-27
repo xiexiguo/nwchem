@@ -44,6 +44,19 @@ ifdef TCE_CUDA
  LIB_DEFINES += $(CUDA_INCLUDE)
 endif
 
+ifdef TCE_HIP
+ LIB_INCLUDES = -I../include -I../ttlg/includes
+ OBJ_OPTIMIZE += hybrid.o memory.o ccsd_t_gpu.o ccsd_t_singles_gpu.o ccsd_t_doubles_gpu.o
+ ifdef USE_TTLG
+  LIB_INCLUDES += -I../include 
+  OBJ_OPTIMIZE +=  sd_t_total_ttlg.o
+ else
+  OBJ_OPTIMIZE +=  sd_t_total.o
+ endif
+ USES_BLAS += ccsd_t_singles_gpu.F ccsd_t_doubles_gpu.F
+ LIB_DEFINES += $(HIP_INCLUDE)
+endif
+
 ifdef TCE_NEW_OPENMP
  OBJ_OPTIMIZE += ccsd_t_omp.o
 endif
