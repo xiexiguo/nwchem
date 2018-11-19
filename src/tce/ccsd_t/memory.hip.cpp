@@ -99,11 +99,6 @@ void *getGpuMem(size_t bytes) {
   return ptr;
 }
 
-hipError_t m_hipHostMalloc(void **ptr, size_t size)
-{
-	return hipHostMalloc(ptr, size);
-}
-
 void *getHostMem(size_t bytes) {
   assert(is_init);
   void *ptr;
@@ -134,7 +129,7 @@ void *getHostMem(size_t bytes) {
     }
   }
 /*   cutilSafeCall(hipHostMalloc((void **) &ptr, bytes)); */
-  ptr = morecore(m_hipHostMalloc, bytes);
+  ptr = morecore(hipMallocHost, bytes);
   live_ptrs_host[ptr] = bytes;
 #endif
   return ptr;
