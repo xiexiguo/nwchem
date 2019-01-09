@@ -164,9 +164,6 @@ endif
 
 ifdef TCE_HIP
       LIB_DEFINES += -DTCE_HIP
-      ifdef USE_TTLG
-        SUBDIRS += ttlg
-      endif
 endif
 
 ifdef USE_PSTAT
