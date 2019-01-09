@@ -2875,6 +2875,10 @@ endif
 ifndef HIP
   HIP = hipcc
 endif
+ifdef TCE_HIP
+  CORE_LIBS += $(HIP_LIBS)
+  EXTRA_LIBS += -lstdc++
+endif
 
 ifdef USE_F90_ALLOCATABLE
   DEFINES += -DUSE_F90_ALLOCATABLE
@@ -3012,7 +3016,7 @@ endif
 
 ifdef TCE_HIP
 (%.o):  %.hip.cpp
-	$(HIP) -c -DTCE_HIP -o $% $<
+	$(HIP) -c -DTCE_HIP -fno-gpu-rdc -o $% $<
 endif
 
 (%.o):  %.o
