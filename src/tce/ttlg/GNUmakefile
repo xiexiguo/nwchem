@@ -13,10 +13,6 @@ ifdef TCE_CUDA
 LIB_INCLUDES += $(CUDA_INCLUDE)
 endif
 
-ifdef TCE_HIP
-LIB_INCLUDES += $(HIP_INCLUDE)
-endif
-
  #CUDA_FLAGS = -I./includes $(CUDA_INCLUDE)
 
 LIBRARY = libtce.a

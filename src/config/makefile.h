@@ -2875,11 +2875,6 @@ endif
 ifndef HIP
   HIP = hipcc
 endif
-ifdef TCE_HIP
-  ifdef USE_TTLG
-    EXTRA_LIBS += -lhipblas
-  endif
-endif
 
 ifdef USE_F90_ALLOCATABLE
   DEFINES += -DUSE_F90_ALLOCATABLE
@@ -3016,13 +3011,8 @@ endif
 endif
 
 ifdef TCE_HIP
-ifdef USE_TTLG
-(%.o):  %.hip.cpp
-	$(HIP) -c -DTCE_HIP -I$(NWCHEM_TOP)/src/tce/ttlg/includes -o $% $<
-else
 (%.o):  %.hip.cpp
 	$(HIP) -c -DTCE_HIP -o $% $<
-endif
 endif
 
 (%.o):  %.o
