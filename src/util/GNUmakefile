@@ -304,7 +304,6 @@ endif
 
 ifdef TCE_HIP
   LIB_DEFINES += $(HIP_INCLUDE)
-  DEFINES += -DTCE_HIP
   OBJ += util_cuda_support.o
 endif
 

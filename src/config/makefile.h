@@ -2877,7 +2877,7 @@ ifndef HIP
   HIP = hipcc
 endif
 ifdef TCE_HIP
-  DEFINES += -DTCE_HIP
+  DEFINES += -DTCE_HIP $(shell hipconfig --cpp_config)
   CORE_LIBS += $(HIP_LIBS)
   EXTRA_LIBS += -lstdc++
 endif
