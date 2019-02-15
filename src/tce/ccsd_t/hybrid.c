@@ -6,7 +6,6 @@ static long long device_id=-1;
 #include <stdio.h>
 #include <stdlib.h>
 #ifdef TCE_HIP
-#define __HIP_PLATFORM_HCC__
 #include <hip/hip_runtime_api.h>
 #endif
 #ifdef TCE_CUDA

@@ -2,7 +2,6 @@
 #define __header_h__
 
 #ifdef TCE_HIP
-#define __HIP_PLATFORM_HCC__
 #include <hip/hip_runtime_api.h>
 #endif
 

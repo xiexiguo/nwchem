@@ -8,7 +8,6 @@
 #endif
 #endif
 #ifdef TCE_HIP
-#define __HIP_PLATFORM_HCC__
 #include <hip/hip_runtime_api.h>
 #endif
 #include "ga.h"
